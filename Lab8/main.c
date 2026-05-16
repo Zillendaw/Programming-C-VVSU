@@ -58,6 +58,18 @@ int compare_by_sex(const void *a, const void *b) {
 	return strcmp(personB->sex,personA->sex);
 }
 
+// Функция-компаратор для сравнение двух людей по росту
+int compare_by_height(const void *a, const void *b) {
+	
+	// Берём два объекта из структуры Person для сравнения
+	Person *personA = (Person *)a;
+	Person *personB  = (Person *)b;
+	
+	// Сравниваем в компараторе рост
+	return (personA->height - personB->height);
+}
+
+
 int main ()
 {
 	FILE *open_file = fopen("main.txt","r");
@@ -87,7 +99,7 @@ int main ()
 		// Проверяем, успешно ли считано ровно 5 элементов?
 		if (parsed == 5)
 		{
-			printf("%s %s, %d год, пол %s, вес %d\n",
+			printf("%s %s, %d год, пол %s, рост %d см\n",
 				   people[line_count].lastname,
 				   people[line_count].name,
 				   people[line_count].birth_year,
@@ -101,7 +113,7 @@ int main ()
 	printf("\nВсего загружено людей: %d\n",line_count);	
 	
 	// Сортируем массив людей
-	qsort(people, line_count, sizeof(Person), compare_by_sex);
+	qsort(people, line_count, sizeof(Person), compare_by_height);
 	
 	// Выводим отсортированный массив людей
 	printf("Sorted People:\n");
