@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 int main(int argc, char **argv)
 {
     char str[256] = "-123.5 + 4 - 456+56";
@@ -10,31 +11,38 @@ int main(int argc, char **argv)
     char symbol_plus = '+';
     char symbol_minus = '-';
     
-    //printf("Add input: ");
-    //scanf("%s",&str);
-    
     char *token = strtok(str,delim);
+    double result = 0;
+    bool is_plus = 1;
     
     while (token != NULL)
-    {
-		double result;
+    {	
+		double num = strtod(token,NULL);
+		printf("result: %f\n",result);
+		printf("token: '%s'\n", token);
 		
-		if (strchr(token,symbol_minus) != NULL)
+		if (strcmp(token,"+") == 0)
 		{
-			double num_minus = strtod(token,NULL);
-			result += num_minus;
-			//printf("%s",token);
-		}		
-		else if (strchr(token,symbol_plus) != NULL)
+			is_plus = 1;
+		}
+		else if (strcmp(token,"-") == 0)
 		{
-			
-			//printf("%s",token);
+			is_plus = 0;	
+		}
+		
+		if (is_plus)
+		{
+			result += num;
+		}
+		else
+		{
+			result -= num;
 		}
 		
 		token = strtok(NULL,delim);
 		if (token == NULL)
 		{
-			printf("%f",result);
+			printf("%f\n",result);
 		}
 	}
     	
