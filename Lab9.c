@@ -27,7 +27,7 @@ int main(int argc, char **argv)
     char *token = strtok(formatted_str,delim);
     
     double result = 0;
-    bool is_plus = 1; // 1 - Сложениеl ; 0 - Вычитание    
+    bool is_plus = 1; // 1 - Сложение; 0 - Вычитание    
     while (token != NULL)
     {	
 		if (strcmp(token,"+") == 0)

@@ -10,7 +10,15 @@
 				(result) = (arr)[i];\
 			}\
 		}\
-} while(0)
+} while(0)\
+
+#define AVG(arr,n,result) do {\
+		(result) = (arr)[0];\
+		for (int i = 1; i < (n); i++) {\
+			(result) += (arr)[i];\
+		}\
+		(result) /= n;\
+	}while(0)\
 
 
 int main(int argc, char **argv)
@@ -21,6 +29,8 @@ int main(int argc, char **argv)
 	int arr[256];
 	int n = 0;
 	int max;
+	
+	int avg_num;
 	
 	printf("Input: ");
 	fgets(str, sizeof(str), stdin);
@@ -38,11 +48,17 @@ int main(int argc, char **argv)
 	{
 		FIND_MAX(arr,n,max);
 		printf("Maximum number: %d\n",max);
+		
+		AVG(arr,n,avg_num);
+		printf("Average: %d\n",avg_num);
 	}
 	else
 	{
 		printf("No numbers entered.\n");
 	}
+	
+	
+	
 	return 0;
 }
 
