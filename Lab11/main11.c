@@ -13,4 +13,3 @@ int main(int argc, char **argv)
 	printf("%f\n",avg_num);
 	return 0;
 }
-
