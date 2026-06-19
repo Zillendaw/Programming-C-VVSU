@@ -2,26 +2,23 @@
 #include <setjmp.h>
 
 jmp_buf buffer;
+int final_sum = 0;
 
-long long fibonacci (int n)
+int fibonacci(int n)
 {
 	//printf("%d\n",n);
 	
-	if (n == 0) 
-	{
-		return 0;
-	}
-	else if (n == 1)
-	{
-		return 1;		
-	}
-	else if (n < 0)
+	if (n < 0)
 	{
 		printf("Число Фибоначчи не может быть меньше 0!\n");
-		longjmp(buffer,1);		
+		longjmp(buffer,228);		
 	}
 	
+	if (n == 0) return 0;
+	if (n == 1) return 1;
+	
 	return fibonacci(n-1) + fibonacci(n-2);
+	longjmp(buffer,1);
 }
 
 int main(int argc, char **argv)
@@ -31,7 +28,7 @@ int main(int argc, char **argv)
 	
 	if (error_code == 0)
 	{
-		printf("%d-е число Фиббоначи: %lld\n", n, fibonacci(n));
+		printf("%d-е число Фиббоначи: %d; Код: %d\n", n, fibonacci(n),error_code);
 	}
 	else
 	{
