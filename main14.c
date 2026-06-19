@@ -6,7 +6,7 @@ long long final_sum = 0;
 
 void fibonacci(int target, int current_step,int a, int b)
 {
-	if (target < 0)
+	if (target <= 0)
 	{
 		printf("Число Фибоначчи не может быть меньше 0!\n");
 		longjmp(buffer,2026);		
@@ -25,7 +25,7 @@ void fibonacci(int target, int current_step,int a, int b)
 
 int main(int argc, char **argv)
 {
-	int n = 45;
+	int n = 10;
 	int error_code = setjmp(buffer);
 	
 	if (error_code == 0)
