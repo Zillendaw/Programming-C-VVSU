@@ -4,6 +4,8 @@
 #include <string.h>
 #include <time.h>
 
+// Сделать через структуру TM ! ! !
+
 int main(int argc, char **argv)
 {
   int year = 0;
@@ -108,10 +110,9 @@ int main(int argc, char **argv)
     
     if (month >= 1 && month <= 12) {
         int y = year, m = month, d = day;
+        // Алгоритм Сакамото для нахождения дня недели
         int t[] = {0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4};
         if (m < 3) y -= 1;
-        
-        // Алгоритм Сакамото для нахождения дня недели
         int dow = (y + y/4 - y/100 + y/400 + t[m-1] + d) % 7;
         const char *days[] = {"Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"};
         
